@@ -1,0 +1,115 @@
+     <h1>Admin Space</h1>
+            <div class="container">
+              <div class="row">
+               <div class="col-md-6">
+
+                <fieldset >
+                    <legend>Utilisateur</legend>
+                       <table class="table ">
+                        <?php foreach ($res as $v) {?>   
+                         <tr>
+                            <td>
+                                <?= $v->nom." ".$v->prenom." " ?>
+                            </td>
+                            <td>
+                                <?= $v->role; ?>
+                            </td>
+                            <td>
+                                <a href="admin_user_delete.php?user_id=<?= $v->id ?>"><i class="fas fa-trash-alt" ></i></a> 
+                            </td>
+                            <td>
+                                <a href="admin_user_select.php?user_id=<?= $v->id ?>" id="update"><i class="fas fa-pen"></i></a>
+                           
+                            </td>
+                          </tr>
+                        <?php }?>
+                        </table>
+                </fieldset>
+                </div>
+
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-info" id="ajouteruser" value="Ajouter Utilisateur"> 
+
+                        <form class="container btnloginForm" id="utilisateur" method="post" action="">
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <input type="text" id="prenom" name="prenom" class="form-control" placeholder="First name">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" id="nom" name="nom" class="form-control" placeholder="Last name">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="inputEmail4">Email</label>
+                                    <input type="email" name="mail" class="form-control" id="inputEmail4" placeholder="Email">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="inputPassword4">Password</label>
+                                    <input type="password" class="form-control" name="pass" id="inputPassword4" placeholder="Password">
+                                </div>
+                            </div>
+                                <div class="input-group row">
+                                        <select name="admin" id="type" class="form-control">
+                                            <option value="admin">Admin</option>
+                                            <option value="auteur">Auteur</option>
+                                        </select> 
+                                </div>
+                                <button  class="btn btn-success" id="adduser">Add user</button>
+
+                        </form>
+
+                    </div>
+               </div>
+
+                <div class="form-group row">
+                    <div class="col-md-6">
+                <fieldset >
+                    <legend>Post</legend>
+
+                        <table>
+                        <?php foreach ($result as $res) {?> 
+                             <tr>
+                                 <td>- <strong><?= $res->titre ?></strong></td>
+                                 <td><?= $res->contenu ?> </td>
+                                 <td><a href="admin_post_delete.php?post_id=<?= $res->id ?>" id="delete"><i class="fas fa-trash-alt" ></i></a></td>
+                            </tr>
+                        <?php }?>
+                        </table>
+                </fieldset>
+
+                    </div>
+               
+                    <div class=" col-md-6">
+                        <strong>Category</strong>
+
+                        <select class="form-control">
+                            <?php foreach ($cat as $v) {?>   
+                                <option ><?= $v->nom ?></option> 
+                            <?php }?>
+
+                        </select>
+                    
+                  <!--   <input type="submit" class="btn btn-info" value="Ajouter Category" id="addcat"> -->
+                  <button class="btn btn-info" id="addform" >Ajouter Category</button>
+
+                    <form class="container addform " id="category" method="get">
+
+                        <div class="form-group row">
+                            <input type="text" name="category" class="form-control" placeholder="category">
+                        </div>
+                        <button  class="btn btn-success" id="addcat">Add category</button>
+
+                    </form>
+                    </div>
+
+                </div>
+            </div>
+            
+        
+<script src="js/admin.js"></script>
+ 

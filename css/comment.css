@@ -1,0 +1,18 @@
+*{ box-sizing: border-box;}
+
+body {background-color: #0B406F;}
+
+.navbar {position: fixed;top: 0;width: 100%;z-index: 10; font-size: 1.2em; }
+
+main{margin-top: 5%;}
+
+main h1{margin: 1%; color:beige;}
+
+main .container{ padding:1%;}
+
+.card-body{background-color:beige;  display: flex;border-radius: 30px;}
+
+.card-body .image{width: 30%; margin-right: 2%;}
+
+.card-body .contenu{width: 70%;}
+

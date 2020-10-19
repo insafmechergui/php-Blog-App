@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+   
+    <head>
+
+        <title>Blog</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/home.css">
+
+    </head>
+
+    <body>
+       <header> 
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="home.php">Home</a>
+                        </li>
+
+                        <?php if(empty($_SESSION)){  ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="insert_inscri.php" >Inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="insertlogin.php" >login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="insert_inscri_admin.php" >Inscription Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="insert_inscri_author.php" >Inscription Auteur</a>
+                    </li>
+                <?php }
+                ?>
+                <?php if (!empty($_SESSION)){
+
+                if($_SESSION["role_id"] == 3)
+                {
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="postadd.php">Add article</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="author.php">Author Space</a>
+                    </li>
+
+
+                    <?php
+                } else if($_SESSION["role_id"] == 2)
+                {
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.php">Admin Space</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="postadd.php">Add article</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="author.php">Article Space</a>
+                    </li>
+
+                    <?php
+                } ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="deconnexion.php" >Logout</a>
+                </li>
+            </ul>
+        </div>
+                
+                <div >
+                    <p> <?= "Bonjour <strong>".$_SESSION['nom']." ".$_SESSION['prenom']."</strong>"?></p>
+
+                </div>
+                <?php } ?>
+            </nav>
+        </header>
+        
+        <main>
+           <br>
+            <?php include $template.'.phtml' ?>
+            
+        </main>
+
+    
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="css/comment.css">
+          <h1>Comment</h1>
+            <div class="container" >
+                
+                <div class="card" >
+                <?php foreach($res as $post){ ?>
+
+                    <div class="card-body" >
+
+                        <div class="image">
+                           
+                            <?php if(!empty($post['url'])){ ?>
+                                <img src="image/<?= $post['url'] ?>" class="card-img-top" alt="">
+                            <?php } else { ?>
+                                <img src="image/replace.jpg"  alt="">
+                            <?php } ?>
+                        
+                            <p class="card-text" id="temp"><?= $post['date_post'] ?></p>
+                        </div>
+                        <div class="contenu">
+
+                            <h2 class="card-title"><?= $post['titre'] ?></h2>
+
+
+                            <p class="card-text"><?= $post['contenu'] ?></p>
+
+                            <p class="card-text">Author : <?= $post['auteur'] ?></p>
+
+                            <p class="card-text">Category : <?= $post['nom'] ?></p>
+                            <button class="btn btn-primary" id="view">View Comment</button>
+                    <?php if(!empty($_SESSION)){  ?>
+
+                            <button class="btn btn-primary" id="show_add">Add Comment</button>
+                      <?php } else{ ?>      
+                            <a href="insertlogin.php" class="btn btn-primary">Add Comment</a>
+                        <?php } ?>
+                        </div>
+                       
+                    </div>
+                    
+
+                    <?php } ?>
+                    
+                <div class="container">
+                       <div id="addcomment">
+                        <?php if(!empty($_SESSION)){  ?>
+
+                        <h2>Add comment</h2>
+                        <div class="form-group  col-md-6">
+                            <p> <?= $_SESSION['nom']." ".$_SESSION['prenom'] ; ?></p>
+                        </div>
+                        <form method="post" class="container formul" action="commentaire_add.php">
+                          <?php foreach($res as $post){ ?>
+                               <input type="text" name="post_id" value="<?= $post['id'] ?>" hidden>
+                            <?php } ?>
+
+                            <div class="form-group  col-md-6">
+                                <textarea name="message" cols="30" rows="10" placeholder="Votre message" class="form-control" id="msg"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-info" id="comment">Add comment</button>
+
+                        </form>
+                    <?php } ?>
+                      </div>
+                       <div id="lastcomment">
+                            <h2>Comment</h2>
+                            <?php foreach($result as $post){ ?>
+                            <p><?= $post['nom']." ".$post['prenom'] ?></p>
+                            <p><?= $post['contenu'] ?></p> 
+                            <p><?= $post['date_commentaire'] ?></p> 
+                            <?php if(!empty($_SESSION)){  ?>
+
+                                <?php if($_SESSION['email'] == $post['email']) { ?>
+                                    <form action="commentaire_delete.php" method="post" class="form_delete">
+                                       <input type="text" name="comm_id" value="<?= $post['id'] ?>" hidden>
+                                       <input type="text" name="post_id" value="<?= $post['post_id'] ?>" hidden>
+                                        <button id="delete" type="submit"><i class="fas fa-trash-alt" title="Delete"></i></button>
+                                   </form>
+
+                                <?php } ?>
+                            <?php }?>
+                            <hr>
+                            <?php }?>
+                       </div>
+                    </div>
+                </div>
+            </div>
+
+                <script src="js/commentaire.js"></script>
+      

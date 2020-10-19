@@ -1,0 +1,19 @@
+*{ box-sizing: border-box;}
+
+body{background-color:#d1e07f}
+ 
+.navbar {position: fixed;top: 0;width: 100%;z-index: 10; font-size: 1.2em; }
+
+main{margin-top: 7%;}
+
+main h1{margin: 1%; color:beige;}
+
+main .container{padding:1%; background-color: beige}
+
+main h2{color: #2C4E6A;}
+
+main .card-body{display:flex; }
+
+main div .card-body div{padding-right: 5%;}
+
+.btn{background-color: #267f70;color: white}

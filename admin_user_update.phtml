@@ -1,0 +1,19 @@
+<h1>Update Utilisateur</h1>
+<div class="container">
+   
+    <form action="admin_user_update.php" method="post" class="formul">
+        <input type="text" name="id" value="<?= $res['id'] ?>" class="form-control" hidden>
+        <input type="text" name="nom" value="<?= $res['nom'] ?>" class="form-control">
+        <input type="text" name="prenom" value="<?= $res['prenom'] ?>" class="form-control">
+        <input type="text" name="mail" value="<?= $res['email'] ?>" class="form-control">
+        
+        <button class="btn  btn-success" type="submit">Update</button>
+        <button class="btn btn-danger" type="reset">Annuler</button>
+    </form>
+    
+</div>
+
+
+
+
+    

@@ -1,0 +1,33 @@
+            <h1>Blog</h1>
+                <div class="container">
+                    
+                    <?php foreach($res as $post){ ?>
+                    <div class="card" >
+                    <div class="card-body" >
+   
+                            <div class="homeArt">
+                               <?php if(!empty($post['url'])){ ?>
+                                <img src="image/<?= $post['url'] ?>"  alt="blogImg">
+                               <?php } else { ?>
+                                <img src="image/replace.jpg"  alt="blogImg" >
+
+                               <?php } ?>
+                                <p class="card-text" id="temp"><?= $post['date_post'] ?></p>
+                            </div>
+                            <div>
+                                            
+                                <a href="commentaire.php?id=<?= $post['id'] ?>" title="Add comment"><h2 class="card-title"><?= $post['titre'] ?>  <i class="fas fa-pen-square" ></i></h2></a>
+                 
+                                <p class="card-text"><?= $post['contenu'] ?></p>
+                                
+                                <p class="card-text" id="aut">Author : <?= $post['auteur'] ?> <?= $post['prenom'] ?></p>
+                                
+                                <p class="card-text" id="cat">Category : <?= $post['nom'] ?></p>
+
+                            </div>
+                            
+                        </div>
+                       </div>
+                    <?php } ?>
+                          
+                </div>

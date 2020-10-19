@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="css/comment.css">
+
+<h1>Comment</h1>
+    <div class="container" >
+
+        <?php foreach($res as $post){ ?>
+        <div class="card" >
+            <div class="card-body" >
+
+                <div>
+                    <?php if(!empty($post['url'])){ ?>
+                        <img src="image/<?= $post['url'] ?>" class="card-img-top" alt="">
+                    <?php } else { ?>
+                        <img src="image/replace.jpg"  alt="">
+                    <?php } ?>
+                    <p class="card-text" id="temp"><?= $post['date_post'] ?></p>
+                </div>
+                <div>
+
+                    <h2 class="card-title"><?= $post['titre'] ?></h2>
+
+
+                    <p class="card-text"><?= $post['contenu'] ?></p>
+
+                    <p class="card-text">Author : <?= $post['auteur'] ?></p>
+
+                    <p class="card-text">Category : <?= $post['nom'] ?></p>
+
+                </div>
+            </div>
+            <?php } ?>
+            <h2>Comment</h2>
+            <?php foreach($result as $post){ ?>
+                <p><?= $post['nom']." ".$post['prenom'] ?></p>
+                <p><?= $post['contenu'] ?></p>
+                                <form action="comment_delete.php" method="post" class="form_delete">
+                                       <input type="text" name="comm_id" value="<?= $post['id'] ?>" hidden>
+                                       <input type="text" name="post_id" value="<?= $post['post_id'] ?>" hidden>
+                                        <button id="delete" type="submit"><i class="fas fa-trash-alt" title="Delete"></i></button>
+                                   </form>
+            <?php }?>
+
+        </div>
+    </div>
+<script src="js/comment.js"></script>

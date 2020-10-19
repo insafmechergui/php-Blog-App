@@ -1,0 +1,27 @@
+<h1>Update Post</h1>
+<div class="container">
+    <form action="author_update_post.php" method="post" id="update_post" enctype="multipart/form-data">
+        <fieldset>
+            <legend><i class="fa fa-sticky-note-o"></i> Article</legend>
+            <input type="text" name="id" value="<?= $res['id'] ?>" hidden>
+                    <img src="image/<?= $res['url'] ?>" class="card-img-top" alt="">
+
+                    <label for="titre">Titre :</label>
+                    <input type="text" id="titre" name="titre" value="<?= $res['titre'] ?>" class="form-control col-sm-10">
+               
+                    <label class="textarea" for="contenu">Article :</label>
+                    <textarea id="contents" name="contenu" rows="15" class="form-control"><?= $res['contenu'] ?></textarea>
+                    <label >Image</label>
+                    <input type="file" name="image" class="form-control">
+                    <label>Category</label>
+                        <select class="form-control" name="category">
+                               <?php foreach($sql as $cat){ ?>
+                                <option value="<?= $cat['id'] ?>" ><?= $cat['nom'] ?></option> 
+                                <?php } ?>
+                        </select>
+                    <button class="btn btn-primary" type="submit">Update</button>
+                    <a class="btn" href="author.php">Annuler</a>
+                
+        </fieldset>
+    </form>
+</div>

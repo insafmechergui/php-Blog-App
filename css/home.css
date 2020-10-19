@@ -1,0 +1,22 @@
+*{ box-sizing: border-box;}
+
+body {background-color: #0B406F;}
+
+.navbar {position: fixed;top: 0;width: 100%;z-index: 10; font-size: 1.2em; }
+
+main{margin-top: 5%;}
+
+main h1{margin: 1%; color:beige;}
+
+main .container{padding:1%; background-color: #F8F9FA}
+
+main div .card {margin-top: 10px; background-color: #ECF1F4; position: static; padding: 10px;}
+
+main h2{color: #2C4E6A;}
+
+main .card-body{display:flex; }
+
+main div .card-body div{width: 30%;}
+main div .card-body .homeArt img{width: 90%; height: 100%;}
+
+main #update_post img{width: 10%;float: right;}
